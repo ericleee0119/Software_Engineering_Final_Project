@@ -29,7 +29,7 @@ Here is how the specific algorithm works.
 - Repeat until convergence: \{
 For every i, set 
 $$c^{(i)} := arg min_j ||x^{(i)} - \mu_j||^2$$
- For each j, set  
+ For each j, set
 $$\mu_j :=\frac {\sum_{i=1}^m 1\{c^{(i)} = j \}x^{(i)}} {\sum_{i=1}^m 1\{c^{(i)} = j\} }$$
 \}
 ### UML Diagram
