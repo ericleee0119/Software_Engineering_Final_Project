@@ -1,11 +1,15 @@
 import abc
-class aggregator(abc.ABC):
 
-	def __init__(self):
+class plot(abc.ABC):
+    '''
 
+    '''
+    
+    @abc.abstractmethod
+    def draw(self, t, y):
+        '''
 
-
-	@abc.abstractmethod
-	def draw():
+        '''
+        pass
 
 
