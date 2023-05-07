@@ -11,13 +11,13 @@ from ipywidgets import interact, interactive, fixed, interact_manual
                            slider = slider):'''
 
 class MapPlot():
-        '''
-        
-        '''
+
         map_data_mod = {}
         slider = widgets.IntSlider(value = 30, min = 5, max = 50, step = 5, 
                               description = "clusters num", continuous_update=False, readout = True)
         def input_data(self, map_data):
+            
+            
             self.map_data_mod = map_data
             self.map_data_mod['CMPLNT_FR_TM'] = self.map_data_mod['CMPLNT_FR_TM'].str.split(':').str[0]
             self.map_data_mod['CMPLNT_FR_DT'] = self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] + '/' + self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[2]
@@ -51,7 +51,7 @@ class MapPlot():
                         print('have null')
                 up = slider
                 Ks = range(1, up)
-                algorithmFactory = AlgorithmFactory.create("kmean")
+                algorithmFactory = AlgorithmFactory.AlgorithmFactory.create("kmean")
                 kmean = algorithmFactory.calculate(up, Ks, coords)
                 lat_list = []
                 long_list = []
@@ -59,4 +59,17 @@ class MapPlot():
                 for i in range(len(kmean)):
                     lat_list.append(kmean[up - 2].cluster_centers_[i][0])
                     long_list.append(kmean[up - 2].cluster_centers_[i][1])
+                apikey = ''
+                #gmap = gmplot.GoogleMapPlotter.from_geocode("New York, USA", apikey=apikey)
+                gmap = gmplot.GoogleMapPlotter.from_geocode(first_place, apikey=apikey)
+                # gmap.heatmap( lat_list, long_list, radius = 15)
+                if pin == "HEAT":
+                    gmap.heatmap( lat_list, long_list, radius = 15)
+                else:
+                    gmap.scatter(lat_list, long_list, "cornflowerblue")
+                gmap.draw('map.html')
+
+                #f=codecs.open("map.html", 'r')
+                filename = 'file:///'+os.getcwd()+'/' + 'map.html'
+                webbrowser.open_new_tab(filename)
                 
