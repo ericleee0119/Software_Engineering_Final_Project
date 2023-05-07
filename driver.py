@@ -6,12 +6,33 @@ import pandas as pd
 import webbrowser
 import os
 #import gmplot
-apikey = 'gmap = gmplot.GoogleMapPlotter.from_geocode("New York, USA", apikey=apikey)'
 
+import finalproject_UI
+
+#command: choose which plot to use -> UI -> call map
+#plot name, line chart, histgram, map 2. data 3. UI chosen col, city, time, month
 #call which plot -> (diff plots have diff UI)
 
+print("Welcome to the command line interface")
 file_name = input("csvFileName: ")
-data = pd.read_csv(file_name)
+#data = pd.read_csv(file_name)
+data = []
+plot_names = ['line_plot', 'histogram_plot']
+
+print('Available plot names:')
+for name in plot_names:
+    print('- ' + name)
+chosen_name = input('Enter the name of the plot you want to use: ')
+
+# Check if the chosen name is in the list of plot names
+if chosen_name in plot_names:
+    print(f'You have chosen the {chosen_name} plot.')
+else:
+    print(f'{chosen_name} is not a valid plot name.')
+
+chosen_city, order = finalproject_UI.UI()
+print(f'You have chosen the {chosen_city} and {order}.')
+
 
 def Data_preprocess(data):
     data_mod = data
@@ -23,17 +44,17 @@ def Data_preprocess(data):
                             (data_mod['CMPLNT_FR_DT'] == '2016') | (data_mod['CMPLNT_FR_DT'] == '2017') |
                             (data_mod['CMPLNT_FR_DT'] == '2018') | (data_mod['CMPLNT_FR_DT'] == '2019') |
                             (data_mod['CMPLNT_FR_DT'] == '2020') | (data_mod['CMPLNT_FR_DT'] == '2021')]
-    data = data_mod
-    print("data preprocessed and stored in data")
+    #print("data preprocessed")
     return data_mod
 
+#data = Data_preprocess(data)
+
+
 commands = {
-    "Data_preprocess": Data_preprocess,
-    "help": lambda: print("Available commands: Data_preprocess, help, quit")
+    "help": lambda: print("Available commands: help, quit")
 }
 
 def main():
-    print("Welcome to the command line interface")
     while True:
         command = input("Enter a command: ")
         if command == "quit":

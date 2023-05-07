@@ -47,5 +47,5 @@ def UI():
         chosen_city, order = selected_options
     return chosen_city,order
 
-print(UI())
+#print(UI())
     
