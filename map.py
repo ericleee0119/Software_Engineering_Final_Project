@@ -4,18 +4,18 @@ import math
 import os
 import gmplot
 import AlgorithmFactory
+import plot_aggregator
 import ipywidgets as widgets
 from ipywidgets import interact, interactive, fixed, interact_manual
-'''def create_map_plot(city = (['ALL', 'BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']), 
-                          pin = (['HEAT', 'SCATTER']), 
-                           slider = slider):'''
 
-class MapPlot():
 
+class MapPlot(plot_aggregator.plot):
+        '''
+        '''
         map_data_mod = {}
         slider = widgets.IntSlider(value = 30, min = 5, max = 50, step = 5, 
                               description = "clusters num", continuous_update=False, readout = True)
-        def input_data(self, map_data):
+        def create(self, map_data):
             
             
             self.map_data_mod = map_data
@@ -27,7 +27,7 @@ class MapPlot():
             
             
         
-        def create_map_plot(self):
+        def draw(self):
             @interact
             def map_plot(city = (['ALL', 'BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']), 
                                       pin = (['HEAT', 'SCATTER']), 
