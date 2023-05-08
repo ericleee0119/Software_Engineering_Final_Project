@@ -3,15 +3,18 @@ import numpy as np
 import math
 import os
 import gmplot
+import functools
 import AlgorithmFactory
-import plot_aggregator
+# mport plot_aggregator
 import ipywidgets as widgets
 from ipywidgets import interact, interactive, fixed, interact_manual
 
 
-class MapPlot(plot_aggregator.plot):
-        '''
-        '''
+button = widgets.Button(description="Click Me!")
+api = widgets.Text(description='api:')
+buttonClick = False
+class MapPlot():
+
         map_data_mod = {}
         slider = widgets.IntSlider(value = 30, min = 5, max = 50, step = 5, 
                               description = "clusters num", continuous_update=False, readout = True)
@@ -25,13 +28,15 @@ class MapPlot(plot_aggregator.plot):
             self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[1] == '2022')]
             self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] == '09')]     
             
-            
+        
         
         def draw(self):
-            @interact
-            def map_plot(city = (['ALL', 'BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']), 
-                                      pin = (['HEAT', 'SCATTER']), 
-                                       slider = self.slider):
+            def setbuttonclick(b, city="", slider = "", pin="", api=""):
+                print(city)
+                buttonClick = True
+                  
+            #def draw_map(city, pin, slider, api):
+
                 curr_data = self.map_data_mod
                 first_place = "New York, USA"
                 if city != 'ALL':
@@ -59,7 +64,8 @@ class MapPlot(plot_aggregator.plot):
                 for i in range(len(kmean)):
                     lat_list.append(kmean[up - 2].cluster_centers_[i][0])
                     long_list.append(kmean[up - 2].cluster_centers_[i][1])
-                apikey = ''
+                print(api)
+                apikey = str(api)
                 #gmap = gmplot.GoogleMapPlotter.from_geocode("New York, USA", apikey=apikey)
                 gmap = gmplot.GoogleMapPlotter.from_geocode(first_place, apikey=apikey)
                 # gmap.heatmap( lat_list, long_list, radius = 15)
@@ -72,4 +78,14 @@ class MapPlot(plot_aggregator.plot):
                 #f=codecs.open("map.html", 'r')
                 filename = 'file:///'+os.getcwd()+'/' + 'map.html'
                 webbrowser.open_new_tab(filename)
+                buttonClick = False
+            @interact
+            def map_plot(city = (['ALL', 'BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']), 
+                                      pin = (['HEAT', 'SCATTER']), 
+                                       slider = self.slider, api = api):
+                display(button)
+                button.on_click(functools.partial(setbuttonclick, city=city, slider = slider, pin=pin, api=api))
+                
+                
+                
                 
