@@ -12,3 +12,5 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+NYPD_Complaint_Data_Historic.csv

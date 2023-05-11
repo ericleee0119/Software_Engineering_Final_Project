@@ -1,16 +1,27 @@
-from aggregator_line_chart import line_chart 
+from plot_aggregator import plot
 import matplotlib.pyplot as plt
 import seaborn as sns
+import registry
 
-class plot_chart():
 
-	def draw(**curr_data,col):
+class plot_chart(plot):
+
+	def __init__(self, data):
+		self.curr_data = data
+
+	def draw(self, col):
 		line_chart = plt.subplots(figsize=(15, 10))
 
-	    temp = curr_data.groupby(col).size().reset_index(name='count')
-	    line_chart = sns.lineplot(data=temp, x=col, y='count', sort=True)
-	    temp2 = temp[col]
-	    line_chart = sns.lineplot(data=temp, x=col, y='count', sort=True)
-	    line_chart.set_xticks(ax.get_xticks())
-	    line_chart.set_xticklabels(temp2, rotation=90)
+		#['CMPLNT_NUM', 'CMPLNT_FR_DT', 'CMPLNT_FR_TM', 'CMPLNT_TO_DT', 'CMPLNT_TO_TM', 'ADDR_PCT_CD', 'RPT_DT', 'KY_CD', 'OFNS_DESC', 'PD_CD', 'PD_DESC', 'CRM_ATPT_CPTD_CD', 'LAW_CAT_CD', 'BORO_NM', 'LOC_OF_OCCUR_DESC', 'PREM_TYP_DESC', 'JURIS_DESC', 'JURISDICTION_CODE', 'PARKS_NM', 'HADEVELOPT', 'HOUSING_PSA', 'X_COORD_CD', 'Y_COORD_CD', 'SUSP_AGE_GROUP', 'SUSP_RACE', 'SUSP_SEX', 'TRANSIT_DISTRICT', 'Latitude', 'Longitude', 'Lat_Lon', 'PATROL_BORO', 'STATION_NAME', 'VIC_AGE_GROUP', 'VIC_RACE', 'VIC_SEX'] 
+		temp = self.curr_data.groupby(col).size().reset_index(name='count')
+		print(temp)
+		line_chart = sns.lineplot(data=temp, x=col,y = 'count', sort=True)
+		#temp2 = temp[col]
+		#line_chart = sns.lineplot(data=temp, x=col, y='count', sort=True)
+		#line_chart.set_xticks(ax.get_xticks())
+		#line_chart.set_xticklabels(line_chart.get_xticklabels(), rotation=90, ha = "right")
+
+		plt.show()
+
+
 

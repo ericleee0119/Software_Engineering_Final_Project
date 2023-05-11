@@ -1,13 +1,13 @@
 from abc import ABC
 import plot_aggregator
-#from registry import ModelRegistry
+import registry
 
 class plot_Factory(plot_aggregator.plot):
 
-	def create(plot_name, **params):
+	def create(plot_name, data):
 ############redirect to the model algorithm py file base on yml and registry dictionary file################
-		#return ModelRegistry[model_name](**params)
+		return registry.PlotRegistry[plot_name](data)
 		
 
-	def draw():
+	def draw(col):
 		pass

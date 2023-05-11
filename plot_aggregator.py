@@ -6,7 +6,7 @@ class plot(abc.ABC):
     '''
     
     @abc.abstractmethod
-    def draw(self, t, y):
+    def draw(self, col):
         '''
 
         '''
