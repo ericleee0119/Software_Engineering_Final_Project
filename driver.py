@@ -6,6 +6,7 @@ import pandas as pd
 import webbrowser
 import os
 #import gmplot
+import plot_Factory as PF
 
 import finalproject_UI
 
@@ -13,48 +14,60 @@ import finalproject_UI
 #plot name, line chart, histgram, map 2. data 3. UI chosen col, city, time, month
 #call which plot -> (diff plots have diff UI)
 
-print("Welcome to the command line interface")
-file_name = input("csvFileName: ")
-#data = pd.read_csv(file_name)
-data = []
-plot_names = ['line_plot', 'histogram_plot']
-
-print('Available plot names:')
-for name in plot_names:
-    print('- ' + name)
-chosen_name = input('Enter the name of the plot you want to use: ')
-
-# Check if the chosen name is in the list of plot names
-if chosen_name in plot_names:
-    print(f'You have chosen the {chosen_name} plot.')
-else:
-    print(f'{chosen_name} is not a valid plot name.')
-
-chosen_city, order = finalproject_UI.UI()
-print(f'You have chosen the {chosen_city} and {order}.')
-
+#data = None
 
 def Data_preprocess(data):
     data_mod = data
     data_mod['CMPLNT_FR_TM'] = data_mod['CMPLNT_FR_TM'].str.split(':').str[0]
+    data_mod['month'] = data_mod['CMPLNT_FR_DT'].str.split('/').str[0]
     data_mod['CMPLNT_FR_DT'] = data_mod['CMPLNT_FR_DT'].str.split('/').str[2]
 
+
+    #print(data_mod)
     data_mod = data_mod.loc[(data_mod['CMPLNT_FR_DT'] == '2012') | (data_mod['CMPLNT_FR_DT'] == '2013') |
                             (data_mod['CMPLNT_FR_DT'] == '2014') | (data_mod['CMPLNT_FR_DT'] == '2015') |
                             (data_mod['CMPLNT_FR_DT'] == '2016') | (data_mod['CMPLNT_FR_DT'] == '2017') |
                             (data_mod['CMPLNT_FR_DT'] == '2018') | (data_mod['CMPLNT_FR_DT'] == '2019') |
                             (data_mod['CMPLNT_FR_DT'] == '2020') | (data_mod['CMPLNT_FR_DT'] == '2021')]
-    #print("data preprocessed")
     return data_mod
 
-#data = Data_preprocess(data)
+def File_input():
+    global data
+    file_name = input("csvFileName: ")
+    try:
+        data = pd.read_csv(file_name)
+        data = Data_preprocess(data)
+    except Exception as e:
+        print(f"Error: {e}")
+    
+
+def Data_plot():
+    # if not data:
+    #     print("You need to inpu data file first, use File_input commend")
+    #     return
+
+    selected_options = finalproject_UI.UI()
+    print("These are the elements:", end=".")
+    print(*selected_options, sep=", ")
+    
+    #hard coding part
+    chosen_city = selected_options[0]
+    chosen_plot = selected_options[1]
+    chosen_col = selected_options[2]
+    print(chosen_city, chosen_plot, chosen_col)
+
+    plot1 = PF.plot_Factory.create(chosen_plot, data)
+    plot1.draw(chosen_col)
 
 
 commands = {
-    "help": lambda: print("Available commands: help, quit")
+    "File_input": File_input,
+    "Data_plot": Data_plot,
+    "help": lambda: print("Available commands: help, quit, File_input, Data_plot")
 }
 
 def main():
+    print("Welcome to the command line interface")
     while True:
         command = input("Enter a command: ")
         if command == "quit":
@@ -63,9 +76,7 @@ def main():
         elif command in commands:
             func = commands[command]
             try:
-                args = input("Enter the arguments (comma-separated): ").split(",")
-                args = [float(x.strip()) for x in args]
-                result = func(*args)
+                result = func()
                 print(f"Result: {result}")
             except ValueError as e:
                 print(f"Error: {e}")
