@@ -8,7 +8,6 @@ data_mod['CMPLNT_FR_TM'] = data_mod['CMPLNT_FR_TM'].str.split(':').str[0]
 data_mod['month'] = data_mod['CMPLNT_FR_DT'].str.split('/').str[0]
 data_mod['CMPLNT_FR_DT'] = data_mod['CMPLNT_FR_DT'].str.split('/').str[2]
 
-
 #print(data_mod)
 data_mod = data_mod.loc[(data_mod['CMPLNT_FR_DT'] == '2012') | (data_mod['CMPLNT_FR_DT'] == '2013') |
                         (data_mod['CMPLNT_FR_DT'] == '2014') | (data_mod['CMPLNT_FR_DT'] == '2015') |
@@ -16,9 +15,12 @@ data_mod = data_mod.loc[(data_mod['CMPLNT_FR_DT'] == '2012') | (data_mod['CMPLNT
                         (data_mod['CMPLNT_FR_DT'] == '2018') | (data_mod['CMPLNT_FR_DT'] == '2019') |
                         (data_mod['CMPLNT_FR_DT'] == '2020') | (data_mod['CMPLNT_FR_DT'] == '2021')]
 #city = (['ALL', 'BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']), 
-
-plot1 = PF.plot_Factory.create('histogram_plot', data_mod)
-plot1.draw('month')
+def test_histogram():
+    plot1 = PF.plot_Factory.create('histogram_plot', data_mod)
+    plot1.draw('month')
+def test_linechart():
+    plot2 = PF.plot_Factory.create('line_plot', data_mod)
+    plot2.draw('month')
 
 '''
 for generate line plot 
