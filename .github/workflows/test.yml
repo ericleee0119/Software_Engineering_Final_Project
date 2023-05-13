@@ -26,7 +26,8 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          pip install ruff pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install -r requirement.txt
           
       - name : test
