@@ -5,6 +5,7 @@ import os
 import gmplot
 import functools
 import AlgorithmFactory
+import plot_Factory
 # mport plot_aggregator
 import ipywidgets as widgets
 from ipywidgets import interact, interactive, fixed, interact_manual
@@ -22,7 +23,7 @@ class MapPlot():
         api = ""
         slider = widgets.IntSlider(value = 30, min = 5, max = 50, step = 5, 
                               description = "clusters num", continuous_update=False, readout = True)
-        def create(self, map_data):
+        def create(self, plot_name, map_data):
             
             
             self.map_data_mod = map_data
@@ -34,7 +35,7 @@ class MapPlot():
             
             print(self.map_data_mod)
         
-        def draw(self):
+        def draw(self, col):
             def setbuttonclick(b, city="", slider = "", pin="", api=""):
                 city = self.city
                 slider = self.slider
