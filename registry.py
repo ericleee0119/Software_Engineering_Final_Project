@@ -4,7 +4,7 @@ import map
 
 PlotRegistry= {
 'line_plot' : line_chart.plot_chart,
-'histogram_plot' : histogram_chart.line_chart
+'histogram_plot' : histogram_chart.line_chart,
 'map_plot' : map.map_plot
 }
 
