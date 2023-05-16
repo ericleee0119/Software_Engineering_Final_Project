@@ -24,7 +24,7 @@ class MapPlot(plot):
         api = ""
         slider = widgets.IntSlider(value = 30, min = 5, max = 50, step = 5, 
                               description = "clusters num", continuous_update=False, readout = True)
-        def __init()__(self, map_data):
+        def __init__(self, map_data):
             
             
             self.map_data_mod = map_data
