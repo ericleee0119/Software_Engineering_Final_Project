@@ -21,6 +21,9 @@ def test_histogram():
 def test_linechart():
     plot2 = PF.plot_Factory.create('line_plot', data_mod)
     plot2.draw('month')
+def test_map():
+    plot2 = PF.plot_Factory.create('map_plot', data_mod)
+    plot2.draw('month')
 
 '''
 for generate line plot 
