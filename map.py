@@ -14,7 +14,7 @@ from ipywidgets import interact, interactive, fixed, interact_manual
 button = widgets.Button(description="Click Me!")
 api = widgets.Text(description='api:')
 buttonClick = False
-class MapPlot():
+class MapPlot(plot):
 
         map_data_mod = {}
         city = ""
