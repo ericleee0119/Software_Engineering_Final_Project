@@ -35,6 +35,7 @@ class MapPlot(plot):
             self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] == '08')]     
             
             print(self.map_data_mod)
+            return None
         
         def draw(self, col):
             def setbuttonclick(b, city="", slider = "", pin="", api=""):
