@@ -24,7 +24,7 @@ class MapPlot(plot):
         api = ""
         slider = widgets.IntSlider(value = 30, min = 5, max = 50, step = 5, 
                               description = "clusters num", continuous_update=False, readout = True)
-        def create(self, plot_name, map_data):
+        def __init()__(self, map_data):
             
             
             self.map_data_mod = map_data
@@ -35,7 +35,7 @@ class MapPlot(plot):
             self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] == '08')]     
             
             print(self.map_data_mod)
-            return None
+            
         
         def draw(self, col):
             def setbuttonclick(b, city="", slider = "", pin="", api=""):
