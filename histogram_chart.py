@@ -7,6 +7,7 @@ class line_chart(plot):
 	def __init__(self, data):
 		self.curr_data = data
 
+		##############use previous created data generate plot###############
 	def draw(self, col):
 		#print(self.curr_data)
 		ax = plt.subplots(figsize=(15, 10))

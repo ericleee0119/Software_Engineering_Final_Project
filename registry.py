@@ -2,13 +2,14 @@ import line_chart
 import histogram_chart
 import map
 
+#########for plot_factory direction use###########
 PlotRegistry= {
 'line_plot' : line_chart.plot_chart,
 'histogram_plot' : histogram_chart.line_chart,
 'map_plot' : map.MapPlot
 }
 
-
+########for line chart and histogram chart plot use########
 ColRegistry = {
 'CMPLNT_FR_DT' : ['2012','2013','2014', '2015','2016', '2017', '2018', '2019', '2020', '2021'],
 'month' : ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],

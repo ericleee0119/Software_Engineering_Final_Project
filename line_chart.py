@@ -9,6 +9,7 @@ class plot_chart(plot):
 	def __init__(self, data):
 		self.curr_data = data
 
+	##############use previous created data generate plot###############
 	def draw(self, col):
 		line_chart = plt.subplots(figsize=(15, 10))
 
@@ -16,10 +17,7 @@ class plot_chart(plot):
 		temp = self.curr_data.groupby(col).size().reset_index(name='count')
 		print(temp)
 		line_chart = sns.lineplot(data=temp, x=col,y = 'count', sort=True)
-		#temp2 = temp[col]
-		#line_chart = sns.lineplot(data=temp, x=col, y='count', sort=True)
-		#line_chart.set_xticks(ax.get_xticks())
-		#line_chart.set_xticklabels(line_chart.get_xticklabels(), rotation=90, ha = "right")
+
 
 		plt.show()
 

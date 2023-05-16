@@ -5,7 +5,7 @@ import os
 import gmplot
 import functools
 import AlgorithmFactory
-import plot_Factory
+from plot_aggregator import plot
 # mport plot_aggregator
 import ipywidgets as widgets
 from ipywidgets import interact, interactive, fixed, interact_manual

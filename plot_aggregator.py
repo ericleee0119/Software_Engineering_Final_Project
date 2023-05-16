@@ -1,5 +1,5 @@
 import abc
-
+########abstract class for plot class############
 class plot(abc.ABC):
     '''
 
