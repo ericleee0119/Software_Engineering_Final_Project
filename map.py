@@ -6,10 +6,7 @@ import gmplot
 import functools
 import AlgorithmFactory
 from plot_aggregator import plot
-<<<<<<< HEAD
-=======
-import plot_Factory
->>>>>>> 7548a600a0fc0f870b4eb19879e06ab027ac82a0
+
 # mport plot_aggregator
 import ipywidgets as widgets
 from ipywidgets import interact, interactive, fixed, interact_manual
