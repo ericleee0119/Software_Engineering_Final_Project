@@ -5,6 +5,7 @@ import os
 import gmplot
 import functools
 import AlgorithmFactory
+from plot_aggregator import plot
 import plot_Factory
 # mport plot_aggregator
 import ipywidgets as widgets
