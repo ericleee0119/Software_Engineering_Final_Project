@@ -20,7 +20,7 @@ data_mod = data_mod.loc[(data_mod['CMPLNT_FR_DT'] == '2012') | (data_mod['CMPLNT
 #city = (['ALL', 'BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND']), 
 
 def test_histogram():
-    plot1 = PF.plot_Factory.create('map_plot', data_mod)
+    plot1 = PF.plot_Factory.create('histogram_plot', data_mod)
     plot1.draw('month')
 
 def test_linechart():
