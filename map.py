@@ -31,8 +31,8 @@ class MapPlot(plot):
             self.map_data_mod['CMPLNT_FR_TM'] = self.map_data_mod['CMPLNT_FR_TM'].str.split(':').str[0]
             self.map_data_mod['CMPLNT_FR_DT'] = self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] + '/' + self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[2]
 
-            self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[1] == '2021')]
-            self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] == '08')]     
+            self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[1] == '2018')]
+            self.map_data_mod = self.map_data_mod.loc[(self.map_data_mod['CMPLNT_FR_DT'].str.split('/').str[0] == '03')]     
             
             print(self.map_data_mod)
             

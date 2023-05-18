@@ -43,12 +43,12 @@ def File_input():
     
 
 def Map_plot():
-    selected_options = finalproject_UI.UI()
-    chosen_city = selected_options[0]
-    chosen_plot = selected_options[1]
-    chosen_col = selected_options[2]
-    mapPlot = map.MapPlot()
-    mapPlot.create(chosen_plot, data)
+    # selected_options = finalproject_UI.UI()
+    # chosen_city = selected_options[0]
+    # chosen_plot = selected_options[1]
+    # chosen_col = selected_options[2]
+    mapPlot = map.MapPlot(data)
+    #mapPlot.create(data)
     mapPlot.draw("abc")
 
 def Data_plot():
