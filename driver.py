@@ -7,6 +7,7 @@ import webbrowser
 import os
 #import gmplot
 import plot_Factory as PF
+import map
 
 import finalproject_UI
 
@@ -41,6 +42,15 @@ def File_input():
         print(f"Error: {e}")
     
 
+def Map_plot():
+    selected_options = finalproject_UI.UI()
+    chosen_city = selected_options[0]
+    chosen_plot = selected_options[1]
+    chosen_col = selected_options[2]
+    mapPlot = map.MapPlot()
+    mapPlot.create(chosen_plot, data)
+    mapPlot.draw("abc")
+
 def Data_plot():
     # if not data:
     #     print("You need to inpu data file first, use File_input commend")
@@ -63,7 +73,8 @@ def Data_plot():
 commands = {
     "File_input": File_input,
     "Data_plot": Data_plot,
-    "help": lambda: print("Available commands: help, quit, File_input, Data_plot")
+    "Map_plot": Map_plot,
+    "help": lambda: print("Available commands: help, quit, File_input, Data_plot, Map_plot")
 }
 
 def main():
