@@ -5,3 +5,4 @@ plot\_Factory module
    :members:
    :undoc-members:
    :show-inheritance:
+

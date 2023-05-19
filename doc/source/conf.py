@@ -16,8 +16,9 @@ release = '1.0.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc']
-
+extensions = ['sphinx.ext.autodoc','autoapi.extension']
+autoapi_type = 'python'
+autoapi_dir = os.path.abspath('../../src/Software_Engineering_Final_Project')
 templates_path = ['_templates']
 exclude_patterns = []
 

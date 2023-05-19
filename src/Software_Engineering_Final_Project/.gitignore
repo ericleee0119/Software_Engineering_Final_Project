@@ -1,16 +1,16 @@
-.venv/
+/src/Softare_Engineering_Final_Project/.venv/
 
-*.pyc
-__pycache__/
+/src/Softare_Engineering_Final_Project/*.pyc
+/src/Softare_Engineering_Final_Project/__pycache__/
 
-instance/
+/src/Softare_Engineering_Final_Project/instance/
 
-.pytest_cache/
-.coverage
-htmlcov/
+/src/Softare_Engineering_Final_Project/.pytest_cache/
+/src/Softare_Engineering_Final_Project/.coverage
+/src/Softare_Engineering_Final_Project/htmlcov/
 
-dist/
-build/
-*.egg-info/
+/src/Softare_Engineering_Final_Project/dist/
+/src/Softare_Engineering_Final_Project/build/
+/src/Softare_Engineering_Final_Project/*.egg-info/
 
-NYPD_Complaint_Data_Historic.csv
+/src/Softare_Engineering_Final_Project/NYPD_Complaint_Data_Historic.csv
