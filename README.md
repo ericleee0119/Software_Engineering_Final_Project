@@ -19,3 +19,11 @@ go under ./doc/
 type command "$ make html"
 Enter a command : quit
 then wait for generating html
+
+![img](./img/img.png)  
+![img](./img/img2.png)  
+![img](./img/img3.png)  
+![img](./img/img4.png)  
+![img](./img/img5.png)  
+![img](./img/img6.png)  
+![img](./img/img7.png)  
