@@ -14,4 +14,8 @@ Run driver.py File: <br />
 UI-
 import dropdownmenu class and run function UI 
 
-
+build html:
+go under ./doc/
+type command "$ make html"
+Enter a command : quit
+then wait for generating html
