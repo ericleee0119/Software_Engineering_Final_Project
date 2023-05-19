@@ -2,7 +2,7 @@ import pandas as pd
 import plot_Factory as PF
 from registry import ColRegistry
 
-data = pd.read_csv('test_data.csv')
+data = pd.read_csv('src/Software_Engineering_Final_Project/test_data.csv')
 data_mod = data
 '''
 data_mod['CMPLNT_FR_TM'] = data_mod['CMPLNT_FR_TM'].str.split(':').str[0]
