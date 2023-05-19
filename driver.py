@@ -53,6 +53,7 @@ def Map_plot():
     
     mapPlot = PF.plot_Factory.create("map_plot", data)
     # mapPlot.create(data)
+
     mapPlot.draw("abc")
 
 def Data_plot():
@@ -92,6 +93,9 @@ def main():
             func = commands[command]
             try:
                 result = func()
+                if command == "Map_plot":
+                    print("check")
+                    break
                 print(f"Result: {result}")
             except ValueError as e:
                 print(f"Error: {e}")
