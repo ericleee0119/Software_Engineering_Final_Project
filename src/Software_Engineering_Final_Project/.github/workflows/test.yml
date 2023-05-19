@@ -23,9 +23,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          
+      
       - name: Install dependencies
         run: |
+          cd src/Software_Engineering_Final_Project/
           pip install --upgrade pip
           pip install ruff pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
