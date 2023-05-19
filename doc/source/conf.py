@@ -18,7 +18,7 @@ release = '1.0.0'
 
 extensions = ['sphinx.ext.autodoc','autoapi.extension']
 autoapi_type = 'python'
-autoapi_dir = os.path.abspath('../../src/Software_Engineering_Final_Project')
+autoapi_dirs = os.path.abspath('../../src/Software_Engineering_Final_Project')
 templates_path = ['_templates']
 exclude_patterns = []
 
